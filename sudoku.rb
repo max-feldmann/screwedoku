@@ -18,7 +18,7 @@ def parse_val(val)
 end
 
 def parse_pos(pos)
-  pos.split(",")
+  pos.split(",").map { |char| Integer(char) }
 end
 
   def get_pos
@@ -31,8 +31,8 @@ end
         pos = parse_pos(gets.chomp)
       rescue
         # TODO: Google how to print the error that happened inside of a rescue statement.
-        puts "Invalid position entered (did you use a comma?)"
-        puts ""
+        "Invalid position entered (did you use a comma?)"
+        ""
 
         pos = nil
       end
@@ -84,3 +84,4 @@ end
 
 
 game = SudokuGame.from_file("puzzles/sudoku1.txt")
+game.run
