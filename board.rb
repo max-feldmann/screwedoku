@@ -45,7 +45,10 @@ class Board
     end
   end
 
-
+  def grid
+    rows
+  end
+  
   def size
     grid.size
   end
