@@ -10,14 +10,6 @@ class SudokuGame
     @board = board
   end
 
-def parse_val(val)
-  Integer(val)
-end
-
-def parse_pos(pos)
-  pos.split(",").map { |char| Integer(char) }
-end
-
   def get_pos
     pos = nil
     until pos && valid_pos?(pos)
@@ -27,7 +19,6 @@ end
       begin
         pos = parse_pos(gets.chomp)
       rescue
-        # TODO: Google how to print the error that happened inside of a rescue statement.
         puts "Invalid position entered (did you use a comma?)"
         puts ""
 
@@ -45,6 +36,14 @@ end
       val = parse_val(gets.chomp)
     end
     val
+  end
+
+  def parse_pos(string)
+    string.split(",").map { |char| Integer(char) }
+  end
+
+  def parse_val(string)
+    Integer(string)
   end
 
   def play_turn
@@ -78,6 +77,7 @@ end
   private
   attr_reader :board
 end
+
 
 game = SudokuGame.from_file("puzzles/sudoku1.txt")
 game.run
